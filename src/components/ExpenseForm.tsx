@@ -10,7 +10,7 @@ interface ExpenseFormProps  {
 }
 const ExpenseForm = ({addexpense}:ExpenseFormProps) => {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } ,reset } = useForm();
   // console.log(errors)
   
   return (
@@ -19,7 +19,7 @@ const ExpenseForm = ({addexpense}:ExpenseFormProps) => {
 
     
     
-      <form className='from-field' onSubmit={handleSubmit((data) => { addexpense(data)} ) }>
+      <form className='from-field' onSubmit={handleSubmit((data) => { addexpense(data);  reset()} ) }>
         <InputField label={"Description"} regst={register} len={3} error={errors} msg="Description should be atleast 3 character" />
         <InputField label={"Amount"}  regst={register} len={0} error={errors} msg="Amount required"/>
         <SelectField label={"Category"} regst={register}  error={errors} msg="Category required" />

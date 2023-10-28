@@ -21,6 +21,7 @@ export type Expense = {
 }
 export type ExpenseListProps = {
     lists: Expense[],
-    deletefn: (id: number)=>void
+    deletefn: (id: number) => void,
+    total:number
 }
 

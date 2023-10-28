@@ -57,13 +57,10 @@ function App() {
   }, [expense])
 
   function deletelist(id: number) {
-
     let removelist= expense.filter((list)=> list.id !==id )
-    setExpense(removelist)
-    
+    setExpense(removelist) 
   }
- 
-
+  const total_expense = expense.reduce((aclr, crt) => aclr + Number(crt.amt), 0)
   return (
    
     <>
@@ -71,7 +68,7 @@ function App() {
         <h1> Expense Tracker</h1>
         <ExpenseForm addexpense={addExpense} />
         <Filter filtering={setExpenselist} filtervalue={expense}  />
-        <ExpenseList lists={expenselist} deletefn={deletelist} />
+        <ExpenseList lists={expenselist} deletefn={deletelist} total={total_expense} />
       </div>
     
    

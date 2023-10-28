@@ -1,7 +1,7 @@
 import React from 'react'
 import { ExpenseListProps } from '../module'
 
-const ExpenseList = ({lists,deletefn}:ExpenseListProps) => {
+const ExpenseList = ({lists,deletefn,total}:ExpenseListProps) => {
   return (
     <>
       <div className='expense-list-card' >
@@ -35,7 +35,7 @@ const ExpenseList = ({lists,deletefn}:ExpenseListProps) => {
         <tfoot>
           <tr>
             <td> Total</td>
-            <td></td>
+              <td>{ total}</td>
           </tr>
 
         </tfoot>
