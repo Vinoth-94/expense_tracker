@@ -94,11 +94,21 @@ table{
     border-radius: 5px;
     cursor: pointer;
 }
-
+.bld-txt{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 1.2rem 0px 0px;
+}
 @media screen and (max-width:800px) {
     #root {
         padding: 2rem 10px;
     }
+    .bld-txt{
+        font-size: 1.7rem;
+        font-weight: 600;
+       
+    }
+    
     .App{
         width: 100%;
         padding: 10px;

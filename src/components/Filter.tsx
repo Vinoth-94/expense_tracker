@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { Expense } from '../module'
 
 interface FilterProps {
-  filtering: React.Dispatch<React.SetStateAction<Expense[]>>
+  filtering: React.Dispatch<React.SetStateAction<string>>
   filtervalue: Expense[]
 
 }
@@ -13,13 +13,13 @@ const Filter = ({ filtering, filtervalue }: FilterProps) => {
 
   const listFilter = (data: React.ChangeEvent<HTMLSelectElement>) => {
     if (data.target.value == "All") {
-      filtering(filtervalue)
+      filtering("All")
     }
     else {
       let filterd_value = filtervalue.filter((value) => {
         return value.catg === data.target.value
       })    
-      filtering(filterd_value)      
+      filtering(data.target.value)      
     }      
   }
  

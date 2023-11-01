@@ -1,7 +1,7 @@
 import React from 'react'
 import { InputProps } from '../module'
 
-const InputField = ({ label, regst, len, error,msg }: InputProps) => {
+const InputField = ({ label, regst, len, error,msg ,type }: InputProps) => {
   
   return (
     
@@ -9,7 +9,7 @@ const InputField = ({ label, regst, len, error,msg }: InputProps) => {
           <label htmlFor={label} className="form-label">       
            {label}
           </label>
-      <input {...regst(label, { required: msg, minLength:{ value:len ,message:msg }, })} type="text" className="form-control" id={label} />
+      <input {...regst(label, { required: msg, minLength:{ value:len ,message:msg }, })} type={type} className="form-control" id={label} />
       {/* {error[label]?.type === "minLength" && (<p className='text-red-5'>{`${error[label]?.message}`}</p>)
         
       } */}

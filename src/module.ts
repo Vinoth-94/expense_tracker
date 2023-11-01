@@ -5,7 +5,8 @@ export interface InputProps{
     regst: UseFormRegister<FieldValues>,
     len: number
     error: FieldErrors<FieldValues>,
-    msg:string,
+    msg: string,
+    type:string
 }
 export interface SelectProps{
     label: string,

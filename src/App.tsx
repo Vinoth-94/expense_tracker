@@ -10,9 +10,8 @@ import { FieldValues } from 'react-hook-form'
 
 
 function App() {
-  const [expense, setExpense] = useState<Expense[]>(
-    [
-      {
+  const [expense, setExpense] = useState<Expense[]>( 
+    [{
         des: "milk",
         amt: 20,
         catg: "Groceries",
@@ -33,10 +32,11 @@ function App() {
         catg: "Entertainment",
         id: 4
       }
+      
     
     ]
   )
-  const [expenselist, setExpenselist] = useState<Expense[]>(expense || [])
+  const [expenselist, setExpenselist] = useState<string>("All")
   
   // console.log(expenselist)
   
@@ -52,24 +52,38 @@ function App() {
     setExpense([...expense, { des: data.Description, amt: data.Amount, catg: data.Category, id: id1 }])
   }
   
-  useEffect(() => {
-    setExpenselist([...expense])    
-  }, [expense])
+  // useEffect(() => {
+  //   setExpenselist([...expense])    
+  // }, [expense])
 
   function deletelist(id: number) {
     let removelist= expense.filter((list)=> list.id !==id )
     setExpense(removelist) 
-  }
-  const total_expense = expense.reduce((aclr, crt) => aclr + Number(crt.amt), 0)
+  } 
+  const filter_val= expenselist=="All" ? expense : expense.filter((value) => {
+        return value.catg === expenselist
+      })    
+  const total_expense = filter_val.reduce((aclr, crt) => aclr + Number(crt.amt), 0)
+// let sum = 0
+//   for (let i = 0; i < expenselist.length; i++){
+    
+//     sum +=Number( expenselist[i].amt)
+//     console.log(sum)
+//   }
   return (
    
     <>
       <div className="App">
         <h1> Expense Tracker</h1>
         <ExpenseForm addexpense={addExpense} />
-        <Filter filtering={setExpenselist} filtervalue={expense}  />
-        <ExpenseList lists={expenselist} deletefn={deletelist} total={total_expense} />
-      </div>
+        {expense.length == 0 ? <p className='bld-txt'> Please enter the data's on above form  </p> :
+          (<> <Filter filtering={setExpenselist} filtervalue={expense} />
+            <ExpenseList lists={filter_val} deletefn={deletelist} total={total_expense} /> </>)
+        }
+        
+      </div> 
+      
+      
     
    
     </>
